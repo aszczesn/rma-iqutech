@@ -1,0 +1,75 @@
+#login_page {
+	background-color: #fff;
+	margin: 0px;
+	padding: 0px;
+}
+
+#login_page .main {
+
+}
+
+#login_page header {
+	padding-top: 50px;
+	text-align: center;
+}
+
+#login_page header h2 {
+	background-color: #cdcdcd;
+	padding-top: 10px;
+	width: 295px;
+	margin: auto;
+	border-bottom: 1px solid #fff;
+	height: 35px;
+	font-size: 1.4em;
+}
+
+#login_page .container {
+	border: none;
+	padding: 0px ;	
+}
+#login_page form{
+	display: block; 
+	margin: 0px auto;
+	background: #eee;
+	border-radius: 10px; 
+	padding: 5px 0px 0px 0px;
+}
+
+#login_page form p{
+	padding-left: 5px;
+}
+#divLogin {
+	padding: 0px 5px;
+	width: 295px;
+	margin: auto;
+}
+
+#divLogin input{
+	margin-left: 35px;
+	width: 150px;
+	padding: 2px;
+	margin-bottom: 2px;
+	height: 20px;
+}
+
+#divLogin label{
+	padding: 5px 0px;
+	margin: 0px 5px 0px 0px;
+	float: left;
+	width: 4em;
+}
+
+#divLogin .loginSubmit{
+	width: 100%;
+	background-color: #cdcdcd;
+	padding: 5px 0px 0px 0px;
+	margin: 3px 0px 0px 0px;
+	height: 35px;
+}
+
+#divLogin .button{
+	background-color: #cfcfcf;
+	width: 100px;
+	margin-left: 100px;
+	height: 30px;
+}

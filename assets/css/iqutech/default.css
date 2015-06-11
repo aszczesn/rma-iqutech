@@ -1,0 +1,40 @@
+body{
+	background-color: #fff;
+	color: #000;
+	margin: 0px;
+	padding: 0px;
+		
+	font-size: 0.98em;
+	font-family: arial, verdana, sans-sherif;
+}
+
+form { display: block; margin: 20px auto; background: #eee; border-radius: 10px; padding: 15px }
+
+.progress { position:relative; width:400px; border: 1px solid #ddd; padding: 1px; border-radius: 3px; }
+.bar { background-color: #B4F5B4; width:0%; height:20px; border-radius: 3px; }
+.percent { position:absolute; display:inline-block; top:3px; left:48%; }
+footer {
+	position: absolute;
+	bottom: -100px;
+	text-align: centre;
+}
+
+#fm{
+	margin:0;
+	padding:10px 30px;
+}
+.ftitle{
+	font-size:14px;
+	font-weight:bold;
+	color:#666;
+	padding:5px 0;
+	margin-bottom:10px;
+	border-bottom:1px solid #ccc;
+}
+.fitem{
+	margin-bottom:5px;
+}
+.fitem label{
+	display:inline-block;
+	width:80px;
+}

@@ -1,0 +1,16 @@
+/* Site Colors:
+   #1A446C - blue grey
+   #689DC1 - light blue
+   #D4E6F4 - very light blue
+   #EEE4B9 - light tan
+   #8D0D19 - burgundy
+*/
+img {border: none; }
+table, tr, th, td {border-collapse: collapse; vertical-align: top; text-align: left; font:13px/15px Veranda, Arial, Helvetica, sans-serif;}
+a {color: #8D0D19;}
+#header {height: 70px; text-align: left; background: #1A446C; color: #D4E6F4;}
+#header h1 {padding: 1em; margin: 0;}
+
+#main {min-height: 500px; width: 97%; background: #EEE4B9; padding: 2em; }
+table.bordered tr th, table.bordered tr td {border: 1px solid #000000;}
+#pagination .selected {font-weight: bold; color: #8D0D19;}

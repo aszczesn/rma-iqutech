@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+<<<<<<< HEAD
+include_path=0;/rma/assets\u00050;/rma/system\u00050;/rma\u00050;/rma/tests\u00050;/rma/application
+=======
+include_path=0;/rma
+org.eclipse.php.core.phpForamtterArrayInitSize=4
+org.eclipse.php.core.phpForamtterIndentationSize=4
+org.eclipse.php.core.phpForamtterIndentationWrappedLineSize=4
+org.eclipse.php.core.phpForamtterUseTabs=false
+>>>>>>> 4963dac189b8ffa21370e67acb79f6e4560928b1
