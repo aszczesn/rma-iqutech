@@ -1,3 +1,4 @@
 .project
 .htaccess
-application/config
+application/config/config.php
+application/config/database.php
