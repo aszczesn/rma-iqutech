@@ -64,8 +64,8 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'iqutech.cpiretelqggl.eu-west-1.rds.amazonaws.com',
-	'username' => 'aszczesn',
+	'hostname' => 'localhost',
+	'username' => 'root',
 	'password' => 'lade978j=',
 	'database' => 'iqtrack',
 	'dbdriver' => 'mysqli',

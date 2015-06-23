@@ -1,0 +1,255 @@
+-- MySQL dump 10.13  Distrib 5.5.43, for debian-linux-gnu (x86_64)
+--
+-- Host: localhost    Database: iqtrack
+-- ------------------------------------------------------
+-- Server version	5.5.43-0ubuntu0.14.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Current Database: `iqtrack`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `iqtrack` /*!40100 DEFAULT CHARACTER SET utf8 */;
+
+USE `iqtrack`;
+
+--
+-- Table structure for table `diy_customer`
+--
+
+DROP TABLE IF EXISTS `diy_customer`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `diy_customer` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `shortname` varchar(45) DEFAULT NULL,
+  `name` varchar(200) NOT NULL,
+  `categoryid` int(10) unsigned NOT NULL,
+  `phoneno` varchar(45) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `address` longtext CHARACTER SET ascii,
+  `city` varchar(45) NOT NULL,
+  `zip` varchar(45) DEFAULT NULL,
+  `country` varchar(45) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '2000-01-01 00:00:00',
+  `created_by` varchar(45) NOT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_by` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `categoryid` (`categoryid`),
+  CONSTRAINT `diy_customer_ibfk_1` FOREIGN KEY (`categoryid`) REFERENCES `diy_customer_type` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `diy_customer`
+--
+-- ORDER BY:  `id`
+
+LOCK TABLES `diy_customer` WRITE;
+/*!40000 ALTER TABLE `diy_customer` DISABLE KEYS */;
+INSERT INTO `diy_customer` VALUES (12,'Pegatron','Pegatron',4,'555-555','test','test','test','test','Test','2015-06-23 21:36:00','DBA','0000-00-00 00:00:00',''),(13,'Foxconn CZ','Foxconn CZ',4,'555-555','test','test','test','test','test','2015-06-23 21:36:45','DBA','2015-06-23 21:37:33','');
+/*!40000 ALTER TABLE `diy_customer` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `diy_customer_type`
+--
+
+DROP TABLE IF EXISTS `diy_customer_type`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `diy_customer_type` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '2000-01-01 00:00:01',
+  `created_by` varchar(20) NOT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_by` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `diy_customer_type`
+--
+-- ORDER BY:  `id`
+
+LOCK TABLES `diy_customer_type` WRITE;
+/*!40000 ALTER TABLE `diy_customer_type` DISABLE KEYS */;
+INSERT INTO `diy_customer_type` VALUES (4,'Customer','2015-06-23 21:05:00','DBA','0000-00-00 00:00:00','DBA');
+/*!40000 ALTER TABLE `diy_customer_type` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sys_groups`
+--
+
+DROP TABLE IF EXISTS `sys_groups`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sys_groups` (
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) NOT NULL,
+  `description` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sys_groups`
+--
+-- ORDER BY:  `id`
+
+LOCK TABLES `sys_groups` WRITE;
+/*!40000 ALTER TABLE `sys_groups` DISABLE KEYS */;
+INSERT INTO `sys_groups` VALUES (1,'admin','Administrator'),(2,'members','General User'),(3,'operator','Line operator'),(4,'Foxconn','Foxconn User');
+/*!40000 ALTER TABLE `sys_groups` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sys_login_attempts`
+--
+
+DROP TABLE IF EXISTS `sys_login_attempts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sys_login_attempts` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `ip_address` varchar(15) NOT NULL,
+  `login` varchar(100) NOT NULL,
+  `time` int(11) unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sys_login_attempts`
+--
+-- ORDER BY:  `id`
+
+LOCK TABLES `sys_login_attempts` WRITE;
+/*!40000 ALTER TABLE `sys_login_attempts` DISABLE KEYS */;
+/*!40000 ALTER TABLE `sys_login_attempts` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sys_session`
+--
+
+DROP TABLE IF EXISTS `sys_session`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sys_session` (
+  `id` varchar(40) NOT NULL,
+  `ip_address` varchar(45) NOT NULL,
+  `user_agent` varchar(120) NOT NULL,
+  `timestamp` int(10) unsigned NOT NULL DEFAULT '0',
+  `data` blob NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `last_activity_idx` (`timestamp`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sys_session`
+--
+-- ORDER BY:  `id`
+
+LOCK TABLES `sys_session` WRITE;
+/*!40000 ALTER TABLE `sys_session` DISABLE KEYS */;
+INSERT INTO `sys_session` VALUES ('03766c9a69ad8077bce01812e2b0a3c35fee16b6','127.0.0.1','',1435092732,'__ci_last_regenerate|i:1435092665;identity|s:25:\"albert.szczesny@yahoo.com\";username|s:13:\"administrator\";email|s:25:\"albert.szczesny@yahoo.com\";user_id|s:1:\"1\";old_last_login|s:10:\"1435089503\";'),('04c06b675207203d237399d32faa2e75093a430e','127.0.0.1','',1432299012,'__ci_last_regenerate|i:1432298863;'),('08a3bd3e2c02163f88b918b7a7d8ea876bc091bf','127.0.0.1','',1435093317,'__ci_last_regenerate|i:1435093041;identity|s:25:\"albert.szczesny@yahoo.com\";username|s:13:\"administrator\";email|s:25:\"albert.szczesny@yahoo.com\";user_id|s:1:\"1\";old_last_login|s:10:\"1435089503\";'),('104a00162f3efb2f76b2becb4f5659689d6a0e4e','127.0.0.1','',1435102875,'__ci_last_regenerate|i:1435102828;identity|s:25:\"albert.szczesny@yahoo.com\";username|s:13:\"administrator\";email|s:25:\"albert.szczesny@yahoo.com\";user_id|s:1:\"1\";old_last_login|s:10:\"1435089829\";'),('1262de260d4198bce7907136a938ab54fe38be1e','127.0.0.1','',1432299675,'__ci_last_regenerate|i:1432299514;'),('13bbe2c4da0866d624bf97cfe1a3e824db71e02f','127.0.0.1','',1435093643,'__ci_last_regenerate|i:1435093343;identity|s:25:\"albert.szczesny@yahoo.com\";username|s:13:\"administrator\";email|s:25:\"albert.szczesny@yahoo.com\";user_id|s:1:\"1\";old_last_login|s:10:\"1435089503\";'),('16a1ef79d26cf9b710a71ab96bdafd10c3918106','127.0.0.1','',1432303798,'__ci_last_regenerate|i:1432303585;'),('1ee39e3f560b0277e3b1cbcb1e061bd283c360e5','127.0.0.1','',1435100542,'__ci_last_regenerate|i:1435100495;identity|s:25:\"albert.szczesny@yahoo.com\";username|s:13:\"administrator\";email|s:25:\"albert.szczesny@yahoo.com\";user_id|s:1:\"1\";old_last_login|s:10:\"1435089829\";'),('3fdcd9acf6665fd4316eab0c021787269e2a3553','127.0.0.1','',1435098671,'__ci_last_regenerate|i:1435098476;identity|s:25:\"albert.szczesny@yahoo.com\";username|s:13:\"administrator\";email|s:25:\"albert.szczesny@yahoo.com\";user_id|s:1:\"1\";old_last_login|s:10:\"1435089829\";'),('4021534a839b1a0628b2db7b6681739da2c35142','127.0.0.1','',1432303514,'__ci_last_regenerate|i:1432303237;'),('50d89a502466ab2262cd4d825ddaa1239e870a6e','127.0.0.1','',1432305694,'__ci_last_regenerate|i:1432305542;identity|s:25:\"albert.szczesny@yahoo.com\";username|s:13:\"administrator\";email|s:25:\"albert.szczesny@yahoo.com\";user_id|s:1:\"1\";old_last_login|s:10:\"1432305170\";__ci_vars|a:1:{s:7:\"message\";s:3:\"old\";}message|s:47:\"<p>Account Information Successfully Updated</p>\";'),('54b1bf699c0f47fb72418791fa334445fb13b924','127.0.0.1','',1432298381,'__ci_last_regenerate|i:1432298115;'),('577ab97df5b87c7958b573da5fe009c1bca65725','127.0.0.1','',1432297522,'__ci_last_regenerate|i:1432297335;'),('6408ef312208365205e6799049e1a330ab67f0a6','127.0.0.1','',1435097982,'__ci_last_regenerate|i:1435097721;identity|s:25:\"albert.szczesny@yahoo.com\";username|s:13:\"administrator\";email|s:25:\"albert.szczesny@yahoo.com\";user_id|s:1:\"1\";old_last_login|s:10:\"1435089829\";'),('679081cf9a661f99bd6961bab4633e8b11580365','127.0.0.1','',1435102450,'__ci_last_regenerate|i:1435102416;identity|s:25:\"albert.szczesny@yahoo.com\";username|s:13:\"administrator\";email|s:25:\"albert.szczesny@yahoo.com\";user_id|s:1:\"1\";old_last_login|s:10:\"1435089829\";'),('6be5c182f82d95544579ac9e695cb191e10b4555','127.0.0.1','',1435102404,'__ci_last_regenerate|i:1435102108;identity|s:25:\"albert.szczesny@yahoo.com\";username|s:13:\"administrator\";email|s:25:\"albert.szczesny@yahoo.com\";user_id|s:1:\"1\";old_last_login|s:10:\"1435089829\";'),('6db2167ab86a4fe3a189e91c94719e6e2f7316f5','127.0.0.1','',1432299187,'__ci_last_regenerate|i:1432299174;'),('70862e9990dede26d3aa7dd6b5f8b20fb77c1ecc','127.0.0.1','',1435089830,'__ci_last_regenerate|i:1435089731;identity|s:25:\"albert.szczesny@yahoo.com\";username|s:13:\"administrator\";email|s:25:\"albert.szczesny@yahoo.com\";user_id|s:1:\"1\";old_last_login|s:10:\"1435089503\";message|s:29:\"<p>Logged In Successfully</p>\";__ci_vars|a:1:{s:7:\"message\";s:3:\"old\";}'),('711d97ecae3e6bdafbb896fe6b3baac13afe60f9','127.0.0.1','',1434065330,'__ci_last_regenerate|i:1434065302;identity|s:25:\"albert.szczesny@yahoo.com\";username|s:13:\"administrator\";email|s:25:\"albert.szczesny@yahoo.com\";user_id|s:1:\"1\";old_last_login|s:10:\"1434065263\";message|s:29:\"<p>Logged In Successfully</p>\";__ci_vars|a:1:{s:7:\"message\";s:3:\"old\";}'),('72357e45e379d1e86f9ab75b977dd8b0d8cfee16','127.0.0.1','',1435090264,'__ci_last_regenerate|i:1435090261;identity|s:25:\"albert.szczesny@yahoo.com\";username|s:13:\"administrator\";email|s:25:\"albert.szczesny@yahoo.com\";user_id|s:1:\"1\";old_last_login|s:10:\"1435089503\";'),('75469c53b52ffcd67d18a3fad70992a593603662','127.0.0.1','',1435092543,'__ci_last_regenerate|i:1435092319;identity|s:25:\"albert.szczesny@yahoo.com\";username|s:13:\"administrator\";email|s:25:\"albert.szczesny@yahoo.com\";user_id|s:1:\"1\";old_last_login|s:10:\"1435089503\";'),('7a8afb18f95e46847a8f729e63f72e3595a43776','127.0.0.1','',1434066552,'__ci_last_regenerate|i:1434066552;identity|s:25:\"albert.szczesny@yahoo.com\";username|s:13:\"administrator\";email|s:25:\"albert.szczesny@yahoo.com\";user_id|s:1:\"1\";old_last_login|s:10:\"1434065263\";'),('7e4faafb05d058246115e3a061fdcec776773bfa','127.0.0.1','',1435088657,'__ci_last_regenerate|i:1435088621;identity|s:25:\"albert.szczesny@yahoo.com\";username|s:13:\"administrator\";email|s:25:\"albert.szczesny@yahoo.com\";user_id|s:1:\"1\";old_last_login|s:10:\"1434070752\";'),('84278d37c459fbbd73735a765b4394bdb8edf333','127.0.0.1','',1435095223,'__ci_last_regenerate|i:1435094950;identity|s:25:\"albert.szczesny@yahoo.com\";username|s:13:\"administrator\";email|s:25:\"albert.szczesny@yahoo.com\";user_id|s:1:\"1\";old_last_login|s:10:\"1435089829\";'),('8e3e57d6ded9a5122cef577c6361606683225286','127.0.0.1','',1432305225,'__ci_last_regenerate|i:1432304930;identity|s:25:\"albert.szczesny@yahoo.com\";username|s:13:\"administrator\";email|s:25:\"albert.szczesny@yahoo.com\";user_id|s:1:\"1\";old_last_login|s:10:\"1432304844\";__ci_vars|a:1:{s:7:\"message\";s:3:\"old\";}message|s:47:\"<p>Account Information Successfully Updated</p>\";'),('9b6dd07f4ee3de5063ff5da171f5d569a6af726f','127.0.0.1','',1435097632,'__ci_last_regenerate|i:1435097415;identity|s:25:\"albert.szczesny@yahoo.com\";username|s:13:\"administrator\";email|s:25:\"albert.szczesny@yahoo.com\";user_id|s:1:\"1\";old_last_login|s:10:\"1435089829\";'),('a5023cce454999dbb49f0e19568acc8e884afa0f','127.0.0.1','',1434070752,'__ci_last_regenerate|i:1434070712;identity|s:25:\"albert.szczesny@yahoo.com\";username|s:13:\"administrator\";email|s:25:\"albert.szczesny@yahoo.com\";user_id|s:1:\"1\";old_last_login|s:10:\"1434065330\";message|s:29:\"<p>Logged In Successfully</p>\";__ci_vars|a:1:{s:7:\"message\";s:3:\"old\";}'),('af43e0ac7b33a89e0cb04644d42f62fd93fed84c','127.0.0.1','',1435096040,'__ci_last_regenerate|i:1435095781;identity|s:25:\"albert.szczesny@yahoo.com\";username|s:13:\"administrator\";email|s:25:\"albert.szczesny@yahoo.com\";user_id|s:1:\"1\";old_last_login|s:10:\"1435089829\";'),('b2e37141b8c8be093f9ad167f00f612110ca0d18','127.0.0.1','',1435100901,'__ci_last_regenerate|i:1435100899;identity|s:25:\"albert.szczesny@yahoo.com\";username|s:13:\"administrator\";email|s:25:\"albert.szczesny@yahoo.com\";user_id|s:1:\"1\";old_last_login|s:10:\"1435089829\";'),('bd91cf1b2fe3901250f8df4af4da06c58f85f635','127.0.0.1','',1435095704,'__ci_last_regenerate|i:1435095459;identity|s:25:\"albert.szczesny@yahoo.com\";username|s:13:\"administrator\";email|s:25:\"albert.szczesny@yahoo.com\";user_id|s:1:\"1\";old_last_login|s:10:\"1435089829\";'),('bed55833b5b0f2c094293130d5b1f85ba907cb46','127.0.0.1','',1435098301,'__ci_last_regenerate|i:1435098075;identity|s:25:\"albert.szczesny@yahoo.com\";username|s:13:\"administrator\";email|s:25:\"albert.szczesny@yahoo.com\";user_id|s:1:\"1\";old_last_login|s:10:\"1435089829\";'),('c9c339e8cd62935a7d3971eee35fe5e07724437a','127.0.0.1','',1432296830,'__ci_last_regenerate|i:1432296830;'),('d6577a8c7c91cb188563d60d20e890ea5f71b310','127.0.0.1','',1434069567,'__ci_last_regenerate|i:1434069567;'),('dd18540c68a6c77d7eec2781960a34d5bc16cc9e','127.0.0.1','',1435096347,'__ci_last_regenerate|i:1435096122;identity|s:25:\"albert.szczesny@yahoo.com\";username|s:13:\"administrator\";email|s:25:\"albert.szczesny@yahoo.com\";user_id|s:1:\"1\";old_last_login|s:10:\"1435089829\";'),('de09a82ed6bc4e73f991e323f56736a45b7b0896','127.0.0.1','',1432297703,'__ci_last_regenerate|i:1432297700;'),('e4cabbb91cf052bbec4739d20cbdf7c1e1cd5093','127.0.0.1','',1435101737,'__ci_last_regenerate|i:1435101570;identity|s:25:\"albert.szczesny@yahoo.com\";username|s:13:\"administrator\";email|s:25:\"albert.szczesny@yahoo.com\";user_id|s:1:\"1\";old_last_login|s:10:\"1435089829\";'),('e8e86736025e16eb918f6fd11d085e2616a658c9','127.0.0.1','',1435096583,'__ci_last_regenerate|i:1435096508;identity|s:25:\"albert.szczesny@yahoo.com\";username|s:13:\"administrator\";email|s:25:\"albert.szczesny@yahoo.com\";user_id|s:1:\"1\";old_last_login|s:10:\"1435089829\";'),('f4ae89fb44bd6659671e12f80a2e3bba31325357','127.0.0.1','',1435094058,'__ci_last_regenerate|i:1435093896;identity|s:25:\"albert.szczesny@yahoo.com\";username|s:13:\"administrator\";email|s:25:\"albert.szczesny@yahoo.com\";user_id|s:1:\"1\";old_last_login|s:10:\"1435089829\";'),('f542f0ce76b850c0dc5756d515ae3db9683e67e0','127.0.0.1','',1435091278,'__ci_last_regenerate|i:1435091102;identity|s:25:\"albert.szczesny@yahoo.com\";username|s:13:\"administrator\";email|s:25:\"albert.szczesny@yahoo.com\";user_id|s:1:\"1\";old_last_login|s:10:\"1435089503\";'),('f63d513269760379d2ebffdab54cd72a1e510773','127.0.0.1','',1435088694,'__ci_last_regenerate|i:1435088694;'),('fa186cf9b4208184300279f2ab2568e3fd2ad08b','127.0.0.1','',1435097132,'__ci_last_regenerate|i:1435096882;identity|s:25:\"albert.szczesny@yahoo.com\";username|s:13:\"administrator\";email|s:25:\"albert.szczesny@yahoo.com\";user_id|s:1:\"1\";old_last_login|s:10:\"1435089829\";'),('fc79025ad73f46f4b367a88c23eae3675c12801d','127.0.0.1','',1432304122,'__ci_last_regenerate|i:1432303934;message|s:22:\"<p>Incorrect Login</p>\";__ci_vars|a:1:{s:7:\"message\";s:3:\"old\";}');
+/*!40000 ALTER TABLE `sys_session` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sys_users`
+--
+
+DROP TABLE IF EXISTS `sys_users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sys_users` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `ip_address` varchar(15) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `salt` varchar(255) DEFAULT NULL,
+  `email` varchar(100) NOT NULL,
+  `activation_code` varchar(40) DEFAULT NULL,
+  `forgotten_password_code` varchar(40) DEFAULT NULL,
+  `forgotten_password_time` int(11) unsigned DEFAULT NULL,
+  `remember_code` varchar(40) DEFAULT NULL,
+  `created_on` int(11) unsigned NOT NULL,
+  `last_login` int(11) unsigned DEFAULT NULL,
+  `active` tinyint(1) unsigned DEFAULT NULL,
+  `first_name` varchar(50) DEFAULT NULL,
+  `last_name` varchar(50) DEFAULT NULL,
+  `company` varchar(100) DEFAULT NULL,
+  `phone` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sys_users`
+--
+-- ORDER BY:  `id`
+
+LOCK TABLES `sys_users` WRITE;
+/*!40000 ALTER TABLE `sys_users` DISABLE KEYS */;
+INSERT INTO `sys_users` VALUES (1,'127.0.0.1','administrator','$2y$10$SwFxgU7oRmoI4.hn.eLAWO3a8bzqe2aJulc9SYUs4p3bE9KvFHTBS','','albert.szczesny@yahoo.com','','',1432305032,NULL,1268889823,1435093909,1,'Albert','Szczesny','Albert Szczesny','0873924460'),(2,'127.0.0.1','mark o\'sullivan','$2y$10$wY0vrXojA/n92BsbziLojeywzdEZy6h3rS3q5lOpbN5MVnlVNsECG',NULL,'mark.osullivan@iqutech.com',NULL,NULL,NULL,NULL,1432305535,1432339208,1,'Mark','O\'Sullivan','iQuTech','0'),(3,'127.0.0.1','admin user','$2y$10$eDKBmXIvnQ.0Snf3bNy5te.D5GSWqjqPAFoAIGdiILX8C92QilewS',NULL,'admin@a.com',NULL,NULL,NULL,NULL,1433971476,1433977163,1,'admin','user','Pegatron','55555555');
+/*!40000 ALTER TABLE `sys_users` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sys_users_groups`
+--
+
+DROP TABLE IF EXISTS `sys_users_groups`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sys_users_groups` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) unsigned NOT NULL,
+  `group_id` mediumint(8) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uc_users_groups` (`user_id`,`group_id`),
+  KEY `fk_users_groups_users1_idx` (`user_id`),
+  KEY `fk_users_groups_groups1_idx` (`group_id`),
+  CONSTRAINT `fk_users_groups_groups1` FOREIGN KEY (`group_id`) REFERENCES `sys_groups` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  CONSTRAINT `fk_users_groups_users1` FOREIGN KEY (`user_id`) REFERENCES `sys_users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=109 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sys_users_groups`
+--
+-- ORDER BY:  `id`
+
+LOCK TABLES `sys_users_groups` WRITE;
+/*!40000 ALTER TABLE `sys_users_groups` DISABLE KEYS */;
+INSERT INTO `sys_users_groups` VALUES (99,3,2),(104,2,1),(105,2,3),(106,1,1),(107,1,2),(108,1,3);
+/*!40000 ALTER TABLE `sys_users_groups` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2015-06-24  0:54:21
