@@ -939,7 +939,7 @@ class Auth extends MX_Controller {
         $data['module'] = $temp[0];
         $data['view_file'] = $temp[1].'.php';
         
-        $this->viewdata = (empty($data)) ? $data: $data;
+        #$this->viewdata = (empty($data)) ? $data: $data;
 
         #$view_html = $this->load->view($view, $this->viewdata, $render);
 

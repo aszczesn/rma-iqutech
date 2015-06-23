@@ -3,13 +3,12 @@
 }
 
 class Template extends MX_Controller {
-    function __construct() {
+    function __construct(){
         parent::__construct();
         $this->load->library('auth/ion_auth');
     }
     
-    public function admin($data = "")
-    {
+    public function admin($data = ""){
         if (!$this->ion_auth->is_admin())
         {
             $this->session->set_flashdata('message', 'You must be an admin to view this page');

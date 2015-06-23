@@ -75,7 +75,7 @@
           </ul>
           <ul class="nav nav-sidebar">
             <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
+            <li><?php echo anchor('diy_customer/index', 'Customers');?></li>
             <li><?php echo anchor('auth/index', 'Users');?></li>
           </ul>
         </div>
