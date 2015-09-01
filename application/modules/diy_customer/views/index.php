@@ -35,7 +35,7 @@
                     <?php endforeach?>
                 </td>
                 <td><?php echo htmlspecialchars($customer->phoneno,ENT_QUOTES,'UTF-8');?></td>
-                <td><?php echo anchor("diy_customer_type/edit_customer/".$customer->id, 'Edit') ;?></td>
+                <td><?php echo anchor("diy_customer/edit_customer/".$customer->id, 'Edit') ;?></td>
             </tr>
 	<?php endforeach;?>
     </tbody>

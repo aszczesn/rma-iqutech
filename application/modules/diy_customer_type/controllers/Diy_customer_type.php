@@ -5,6 +5,14 @@ class Diy_customer_type extends MX_Controller
         parent::__construct();
     }
 
+    function index(){
+        $groups = $this->get('id')->result();
+	echo '<pre>';
+        var_dump($groups);
+        echo '</pre>'; 
+
+    }
+
     function get($order_by) {
         $this->load->model('mdl_diy_customer_type');
         $query = $this->mdl_diy_customer_type->get($order_by);
