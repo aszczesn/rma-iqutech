@@ -2,3 +2,6 @@
 .htaccess
 application/config/config.php
 application/config/database.php
+.buildpath
+.settings/
+user_guide user_guide_src
