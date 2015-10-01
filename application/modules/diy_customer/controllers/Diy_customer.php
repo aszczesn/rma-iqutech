@@ -5,7 +5,7 @@ class Diy_customer extends MX_Controller
         parent::__construct();
         $this->load->model('diy_customer_type/mdl_diy_customer_type');
         $this->load->library(array('auth/ion_auth', 'form_validation'));
-	$this->load->helper(array('url', 'language', 'form'));
+        $this->load->helper(array('url', 'language', 'form'));
     }
     
     function index(){
